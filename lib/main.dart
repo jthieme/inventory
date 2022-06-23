@@ -1,16 +1,94 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:inventory/database.dart';
-import 'firebase_options.dart';
-
-
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:inventory/database.dart';
+// import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
-
+  runApp(TestApp());
 }
+
+class TestApp extends StatelessWidget {
+  TestApp({Key? key}) : super(key: key);
+
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Test",
+      theme: ThemeData(primarySwatch: Colors.purple),
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Add Items"),
+      ),
+      body:
+        //  Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Column(children: <Widget>[
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Enter food Name',
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Enter a food Category',
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Enter food Quantity',
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Enter food Size',
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Enter food something',
+            ),
+          ),
+        ),
+        ElevatedButton(
+          style: ButtonStyle(
+            padding: MaterialStateProperty.all(const EdgeInsets.all(8))
+          ),
+          onPressed: () {print("Henlo, Pupper!");},
+          child: Text("Enter"),
+        ),
+      ]),
+    );
+  }
+}
+
+/*
 
 class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
@@ -78,11 +156,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
       Database dbase = new Database();
     var db = FirebaseFirestore.instance;
+    dbase.setAge(2022);
     // Create a new user with a first and last name
     final user = <String, dynamic>{
       "first": "Ada",
       "last": "Lovelace",
-      "born": dbase.setAge(1950)
+      "born": dbase.getAge()
     };
 
     // Add a new document with a generated ID
@@ -149,4 +228,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+
 }
+*/

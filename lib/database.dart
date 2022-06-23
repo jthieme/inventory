@@ -3,12 +3,15 @@ import 'firebase_options.dart';
 
 
 
-class Database extends DefaultFirebaseOptions {
+class Database {
 
   int myAge = 0;
 
-  int setAge(int age){
+  void setAge(int age){
     myAge = age;
+  }
+
+  int getAge() {
     return myAge;
   }
 
