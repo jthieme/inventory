@@ -1,18 +1,24 @@
 
 import 'firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
 
 class Database {
 
-  int myAge = 0;
+  Map<String, dynamic> _myObj = {};
+  var _db = FirebaseFirestore.instance;
 
-  void setAge(int age){
-    myAge = age;
+  void add(Map<String, dynamic> obj){
+    _myObj = obj;
+    // Add a new document with a generated ID
+    _db.collection("test").add(_myObj).then((DocumentReference doc) =>
+        print('DocumentSnapshot added with ID: ${doc.id}'));
   }
 
-  int getAge() {
-    return myAge;
+  Map read() {
+    return _myObj;
   }
 
 }

@@ -1,5 +1,8 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'addItem.dart';
+import 'listItems.dart';
+
+// import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:inventory/database.dart';
 // import 'firebase_options.dart';
@@ -16,77 +19,54 @@ class TestApp extends StatelessWidget {
     return MaterialApp(
       title: "Test",
       theme: ThemeData(primarySwatch: Colors.purple),
-      home: Home(),
+      // home: AddItem(),
+      home: AddItem()
+      // ListItem(
+      //   items: List.generate(
+      //     2,
+      //     (index) => ListItem(
+      //       'Item ${index + 1}'
+      //     )
+      //   )
+      // )
     );
   }
 }
 
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Add Items"),
-      ),
-      body:
-        //  Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Column(children: <Widget>[
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter food Name',
-            ),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter a food Category',
-            ),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter food Quantity',
-            ),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter food Size',
-            ),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter food something',
-            ),
-          ),
-        ),
-        ElevatedButton(
-          style: ButtonStyle(
-            padding: MaterialStateProperty.all(const EdgeInsets.all(8))
-          ),
-          onPressed: () {print("Henlo, Pupper!");},
-          child: Text("Enter"),
-        ),
-      ]),
-    );
-  }
-}
+
+
+// class TextInput extends StatefulWidget {
+
+//   final String _placeHold;
+
+//   TextInput(this._placeHold);
+
+//   @override
+//   _TextInput createState() => _TextInput(this._placeHold);
+
+// }
+
+// class _TextInput extends State<TextInput> {
+
+//   final String _placeHold;
+//   final inputController = TextEditingController();
+
+//   _TextInput(this._placeHold);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+//       child: TextField(
+//         controller: inputController,
+//         decoration: InputDecoration(
+//           border: OutlineInputBorder(),
+//           hintText: _placeHold,
+//         )
+//       ),
+//     );
+//   }
+// }
 
 /*
 
