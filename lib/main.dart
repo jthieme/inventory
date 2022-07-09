@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'addItem.dart';
 import 'listItems.dart';
+import 'package:firebase_core/firebase_core.dart';
 
+// import 'addItem.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_core/firebase_core.dart';
 // import 'package:inventory/database.dart';
 // import 'firebase_options.dart';
 
@@ -14,21 +14,30 @@ Future<void> main() async {
 
 class TestApp extends StatelessWidget {
   TestApp({Key? key}) : super(key: key);
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+  
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Test",
       theme: ThemeData(primarySwatch: Colors.purple),
-      // home: AddItem(),
-      home: AddItem()
-      // ListItem(
-      //   items: List.generate(
-      //     2,
-      //     (index) => ListItem(
-      //       'Item ${index + 1}'
-      //     )
-      //   )
-      // )
+      home:  
+      FutureBuilder(
+        future: _fbApp,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            print('You have an error! ${snapshot.error.toString()}');
+            return const Text("Something went wrong");
+          } else if (snapshot.hasData) {
+            return const ListItem();
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      )
     );
   }
 }
